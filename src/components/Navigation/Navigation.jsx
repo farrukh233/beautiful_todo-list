@@ -24,26 +24,72 @@ const Navigation = ({
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           onClick={popupHandler}
-          sx={{ minWidth: 220 }}
+          sx={{
+            width: {
+              xs: 50,
+              sm: 150,
+              md: 200,
+              lg: 200,
+              xl: 200,
+            },
+            fontSize: {
+              xs: 10,
+              sm: 12,
+              md: 14,
+              lg: 16,
+              xl: 16,
+            },
+          }}
           variant='contained'>
-          Добавить задачу
+          Add task
         </Button>
         <TextField
-          sx={{ maxWidth: "50%" }}
+          sx={{
+            width: {
+              xs: 150,
+              sm: 300,
+              md: 500,
+              lg: 500,
+              xl: 500,
+            },
+          }}
           fullWidth
-          label='Поиск...'
+          label='Search...'
           type='search'
           onChange={searchHandler}
         />
-        <Box sx={{ minWidth: 220 }}>
+        <Box
+          sx={{
+            width: {
+              xs: 50,
+              sm: 150,
+              md: 200,
+              lg: 200,
+              xl: 200,
+            },
+          }}>
           <FormControl fullWidth>
             <Select
+              xs={{
+                fontSize: {
+                  xs: 10,
+                  sm: 12,
+                  md: 14,
+                  lg: 16,
+                  xl: 16,
+                },
+              }}
               labelId='filtering-select'
               value={filter}
+              sx={{
+                paddingRight: {
+                  xs: 8,
+                },
+              }}
               onChange={handleChange}>
-              <MenuItem value='all'>Все</MenuItem>
-              <MenuItem value='completed'>Выполненные</MenuItem>
-              <MenuItem value='not_completed'>Не выполненные</MenuItem>
+              <MenuItem value='all'>All</MenuItem>
+              <MenuItem value='completed'>Completed</MenuItem>
+              <MenuItem value='not_completed'>Unfulfilled</MenuItem>
             </Select>
           </FormControl>
         </Box>

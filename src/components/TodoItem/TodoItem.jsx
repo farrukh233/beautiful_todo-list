@@ -47,7 +47,6 @@ const TodoItem = ({ title, completed, todos, date, setTodos }) => {
       <material.Box
         sx={{
           flex: 1,
-          padding: "0 10px",
           textDecoration: completed ? "line-through" : "none",
           opacity: completed ? 0.7 : 1,
         }}>
@@ -55,33 +54,86 @@ const TodoItem = ({ title, completed, todos, date, setTodos }) => {
       </material.Box>
       <material.Box
         component='p'
-        sx={{ flex: 1, fontSize: "14px", opacity: "0.7" }}>
+        sx={{
+          flex: 1,
+          fontSize: {
+            xs: 12,
+            sm: 12,
+            md: 12,
+            lg: 14,
+            xl: 14,
+          },
+          opacity: "0.7",
+          position: "relative",
+        }}>
         {date}
       </material.Box>
 
       <div className='right'>
-        <span>
+        <span className='rename'>
           <material.Button
             onClick={renameHandler}
             sx={{
-              minWidth: 20,
+              width: {
+                xs: 50,
+                sm: 120,
+                md: 120,
+                lg: 150,
+                xl: 150,
+              },
+              fontSize: {
+                xs: 10,
+                sm: 11,
+                md: 11,
+                lg: 14,
+                xl: 14,
+              },
               marginRight: "20px",
+              padding: "2px",
+              marginLeft: {
+                xs: 1,
+              },
               ":hover": { backgroundColor: "green" },
             }}
             variant='contained'>
-            Переимеиновать
+            Rename
           </material.Button>
         </span>
-        <span>
+        <span className='delete'>
           <material.Button
             onClick={deleteHandler}
             sx={{
-              minWidth: 50,
+              width: {
+                xs: 10,
+                sm: 50,
+                md: 50,
+                lg: 100,
+                xl: 100,
+              },
+              fontSize: {
+                xs: 10,
+                sm: 11,
+                md: 11,
+                lg: 14,
+                xl: 14,
+              },
               backgroundColor: "red",
+              padding: "2px",
+              marginTop: {
+                xs: 0.5,
+                sm: 0,
+                md: 0,
+                lg: 0,
+                xl: 0,
+              },
+              marginLeft: {
+                xs: 1,
+              },
+
               ":hover": { backgroundColor: "#8B0000" },
             }}
             variant='contained'>
-            Удалить
+            Delete
           </material.Button>
         </span>
       </div>

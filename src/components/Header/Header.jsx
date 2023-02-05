@@ -8,10 +8,16 @@ const Header = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          fontSize: "48px",
+          fontSize: {
+            xs: 18,
+            sm: 24,
+            md: 32,
+            lg: 48,
+            xl: 48,
+          },
           fontWeight: "600",
         }}>
-        Список задач
+        Todo list
       </Box>
     </Box>
   );

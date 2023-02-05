@@ -26,14 +26,9 @@ const AddTodoPopup = ({ closePopup, todos, setTodos }) => {
     <Box className='popup-wrapper'>
       <Box className='popup' component='form' onSubmit={addNewTodo}>
         <Box component='h2' sx={{ marginBottom: "20px", textAlign: "center" }}>
-          Добавить задачу
+          Add task
         </Box>
-        <TextField
-          required
-          fullWidth
-          label='Название'
-          onChange={onChangeInput}
-        />
+        <TextField required fullWidth label='Name' onChange={onChangeInput} />
         <Box>
           <Button
             variant='contained'
@@ -44,9 +39,9 @@ const AddTodoPopup = ({ closePopup, todos, setTodos }) => {
               marginTop: "10px",
               marginBottom: "10px",
             }}>
-            Добавить
+            Add
           </Button>
-          <Button onClick={closePopup}>Отмена</Button>
+          <Button onClick={closePopup}>Cancel</Button>
         </Box>
       </Box>
     </Box>
