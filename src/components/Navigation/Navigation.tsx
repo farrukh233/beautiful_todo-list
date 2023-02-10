@@ -1,4 +1,5 @@
 import React from "react";
+import { FC } from "react";
 import {
   Box,
   TextField,
@@ -8,14 +9,21 @@ import {
   MenuItem,
 } from "@mui/material";
 
-const Navigation = ({
+interface INavigationProps {
+  popupHandler: () => void;
+  filter: string;
+  handleChange: any;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}
+const Navigation: FC<INavigationProps> = ({
   popupHandler,
   filter,
   handleChange,
   search,
   setSearch,
 }) => {
-  const searchHandler = e => {
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
@@ -70,7 +78,7 @@ const Navigation = ({
           }}>
           <FormControl fullWidth>
             <Select
-              xs={{
+              sx={{
                 fontSize: {
                   xs: 10,
                   sm: 12,
@@ -81,11 +89,14 @@ const Navigation = ({
               }}
               labelId='filtering-select'
               value={filter}
-              sx={{
+              /*
+              sx:any={{
                 paddingRight: {
                   xs: 8,
                 },
+                
               }}
+              */
               onChange={handleChange}>
               <MenuItem value='all'>All</MenuItem>
               <MenuItem value='completed'>Completed</MenuItem>

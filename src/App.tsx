@@ -8,17 +8,22 @@ import TodoList from "./components/TodoList/TodoList";
 
 const App = () => {
   const [filter, setFilter] = useState("all");
-  const [popup, setPopup] = useState(false);
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
-  );
-  const [search, setSearch] = useState("");
+  const [popup, setPopup] = useState<boolean>(false);
 
-  const handleChange = e => {
+  const todosFromLocalStorage = localStorage.getItem("todos");
+  const parsedTodos = todosFromLocalStorage
+    ? JSON.parse(todosFromLocalStorage)
+    : [];
+
+  const [todos, setTodos] = useState(parsedTodos);
+
+  const [search, setSearch] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
   };
 
-  const popupHandler = () => {
+  const popupHandler = (): void => {
     setPopup(!popup);
   };
 

@@ -2,8 +2,28 @@ import React, { useState } from "react";
 import * as material from "@mui/material";
 import * as iconsMaterial from "@mui/icons-material";
 import RenameTodo from "../RenameTodo/RenameTodo";
+import { FC } from "react";
 
-const TodoItem = ({ title, completed, todos, date, setTodos }) => {
+interface Todo {
+  title: string;
+  completed: boolean;
+  date: number;
+}
+interface TodoItemProps {
+  title: string;
+  completed: boolean;
+  todos: Todo[];
+  date: number;
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
+
+const TodoItem: FC<TodoItemProps> = ({
+  title,
+  completed,
+  todos,
+  date,
+  setTodos,
+}) => {
   const [renamePopup, setRenamePopup] = useState(false);
   const deleteHandler = () => {
     setTodos(todos.filter(todo => todo.date !== date));
@@ -37,10 +57,10 @@ const TodoItem = ({ title, completed, todos, date, setTodos }) => {
       }}>
       <material.Box className='left'>
         <material.Checkbox
-          сhecked={completed}
+          checked={completed}
           onChange={completeHandler}
           icon={<iconsMaterial.CheckCircleOutline />}
-          checkedIcon={<iconsMaterial.CheckCircle color='succes' />}
+          checkedIcon={<iconsMaterial.CheckCircle color='success' />}
         />
       </material.Box>
 

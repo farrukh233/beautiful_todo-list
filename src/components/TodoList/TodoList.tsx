@@ -1,8 +1,21 @@
 import React from "react";
 import { Box } from "@mui/material";
 import TodoItem from "../TodoItem/TodoItem";
+import { FC } from "react";
 
-const TodoList = ({ todos, setTodos, filter, search }) => {
+interface Todo {
+  title: string;
+  completed: boolean;
+  date: number;
+}
+interface TodoListProps {
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  filter: string;
+  search: string;
+}
+
+const TodoList: FC<TodoListProps> = ({ todos, setTodos, filter, search }) => {
   return (
     <Box className='app-container'>
       <Box

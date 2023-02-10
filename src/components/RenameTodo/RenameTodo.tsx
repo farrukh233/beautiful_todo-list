@@ -2,8 +2,26 @@ import React from "react";
 import { Box, TextField, Button } from "@mui/material";
 import "./RenameTodo.css";
 import { useState } from "react";
+import { FC } from "react";
 
-const RenameTodo = ({ closePopup, todos, setTodos, date }) => {
+interface Todo {
+  title: string;
+  date: number;
+  completed: boolean;
+}
+interface RenameTodoProps {
+  todos: Todo[];
+  date: number;
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  closePopup: () => void;
+}
+
+const RenameTodo: FC<RenameTodoProps> = ({
+  closePopup,
+  todos,
+  setTodos,
+  date,
+}) => {
   const [todoTitle, setTodoTitle] = useState("");
 
   const renameTodo = () => {
@@ -19,7 +37,7 @@ const RenameTodo = ({ closePopup, todos, setTodos, date }) => {
     closePopup();
   };
 
-  const onChangeInput = e => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.target.value);
   };
 

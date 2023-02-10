@@ -2,8 +2,24 @@ import React from "react";
 import { Box, TextField, Button } from "@mui/material";
 import "./AddTodoPopup.css";
 import { useState } from "react";
+import { FC } from "react";
 
-const AddTodoPopup = ({ closePopup, todos, setTodos }) => {
+interface Todo {
+  title: string;
+  date: string;
+  completed: boolean;
+}
+interface AddTodoPopupProps {
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  closePopup: () => void;
+}
+
+const AddTodoPopup: FC<AddTodoPopupProps> = ({
+  closePopup,
+  todos,
+  setTodos,
+}) => {
   const [todoTitle, setTodoTitle] = useState("");
 
   const addNewTodo = () => {
@@ -18,7 +34,7 @@ const AddTodoPopup = ({ closePopup, todos, setTodos }) => {
     closePopup();
   };
 
-  const onChangeInput = e => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.target.value);
   };
 
